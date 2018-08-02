@@ -36,7 +36,10 @@ class MainActivity : AppCompatActivity() {
             Log.e("filter run  ", charSequence.toString())
             charSequence.length >= 3
         }
-                .debounce(3000, TimeUnit.MILLISECONDS)
+        //if  you had this error
+        //Caused by: android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.
+        // you should use debounce operator like this .debounce(3000, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
+                .debounce(3000, TimeUnit.MILLISECONDS) 
                 .map { charSequence ->
                     Log.e("map run  ", charSequence.toString())
                     charSequence.toString()
